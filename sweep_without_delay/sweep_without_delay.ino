@@ -5,7 +5,7 @@ Servo s;
 int servo_pin = 2;  // Which pin is the servo on?
 int min_pos = 0;    // The minimum position we'll be moving to within the motor's ROM
 int max_pos = 180;  // The maximum position
-int curr_pos = 90;  // The motor's current position
+int curr_pos;       // The motor's current position
 bool dir = true;    // True = increasing, false = decreasing
 
 // Timing variables
@@ -15,6 +15,9 @@ int pause_ms = 20;  // How long to pause -- 20ms
 void setup() {
   // Set up the motor
   s.attach(servo_pin);
+
+  // Start the current position one greater than the minimum
+  curr_pos = min_pos + 1;
   
   // Start the clock
   clk = millis();
