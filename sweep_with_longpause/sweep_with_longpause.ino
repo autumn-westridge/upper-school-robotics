@@ -52,6 +52,10 @@ void loop() {
   }
 }
 
+/*  This function can be updated to control the speed of your motor however you want.
+ *  For example, it could go fast when dir is true but slow when it's false,
+ *  faster when it's closer to 0 and slower when it's closer to 180, and so on.
+ */
 void updatePause() {
   // If this is where we're pausing, change the pause_ms to the longpause amount
   if (curr_pos == longpause_pos) {
