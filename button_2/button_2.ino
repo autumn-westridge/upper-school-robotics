@@ -20,7 +20,7 @@ void loop() {
   /*
    * IF: our current value is not the same as the last value
    * AND it has been more than retrig_ms milliseconds
-   * Then consider this a valid button press.
+   * Then this is a valid button press.
    */
   if (curr_button_val != last_button_val && millis() - clk >= retrig_ms) {
     // Report the change
