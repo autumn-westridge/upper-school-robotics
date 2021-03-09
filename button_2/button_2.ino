@@ -24,7 +24,7 @@ void loop() {
    */
   if (curr_button_val != last_button_val && millis() - clk >= retrig_ms) {
     // Report the change
-    if (curr_button_val == HIGH) {
+    if (curr_button_val == LOW) {
       Serial.println("Button pressed");
     }
     else {

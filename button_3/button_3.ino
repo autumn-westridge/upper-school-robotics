@@ -46,20 +46,23 @@ void checkButton() {
    */
   if (curr_button_val != last_button_val && millis() - button_clock >= retrig_ms) {
     // Report the change
-    if (curr_button_val == HIGH) {
-      Serial.println("Button pressed");
+    if (curr_button_val == LOW) {
       button_go = !button_go;
-    }
-    else {
-      Serial.println("Button released");
+      if (button_go) {
+        Serial.println("Starting motor");
+      }
+      else {
+        Serial.println("Stopping motor");
+      }
     }
     
     // Reset the clock
-    clk = millis();
+    button_clock = millis();
+    
     /*
      * We COULD put this outside of the if statement, but that
      * might cause us to fail to report that the button had been released
-     * if the button press is very fast. Why?
+     * if the button press is very short. Why?
      */
     last_button_val = curr_button_val;
   }
