@@ -29,6 +29,7 @@ void readFromSerial() {
     }
     else {
       in_buffer[ndx] = '\0';      // This is a "null terminator" that indicates the end of a string
+      ndx = 0;
       Serial.println(in_buffer);  // Print out the message
     }
   }

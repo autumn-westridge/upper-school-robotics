@@ -37,7 +37,7 @@ void loop() {
   updateServo();
 }
 
-void checkButton() {  
+void checkButton() { 
   curr_button_val = digitalRead(button_pin);  // Get the new value
   /*
    * IF: our current value is not the same as the last value
