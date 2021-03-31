@@ -34,6 +34,7 @@ void loop() {
 
 void readFromSerial() {
   static int ndx = 0;             // The index of the input buffer to place the next character at
+  Serial.println("rfs");
   
   while (Serial.available()) {
     // Read each character sequentially. If it isn't a newline, put it in the buffer
@@ -54,7 +55,7 @@ void readFromSerial() {
       // Error handling
       if (new_pos <= max_pos && new_pos >= min_pos) {
         goal_pos = new_pos;
-        Serial.println(goal_pos);
+        Serial.println((String) "Data: " + goal_pos);
       }
       ndx = 0;
     }
