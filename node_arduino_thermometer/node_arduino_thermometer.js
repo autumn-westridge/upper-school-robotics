@@ -6,8 +6,8 @@ const port = new SerialPort('COM4', {
 
 // Which day/time are we showing?
 var forecast_index = 0;
-// The stored forecast forecastData
-var forecastData;
+// The stored forecast forecast_data
+var forecast_data;
 
 // Web endpoint
 const options = {
@@ -32,7 +32,8 @@ function getData() {
     // When we get it, send the data to the Arduino and store it
     res.on('end', function(){
       var response = JSON.parse(body);
-      forecastData = response.properties.periods;
+      forecast_data = response.properties.periods;
+      console.log(forecast_data)
       sendTempToArduino();
     })
   });
@@ -46,13 +47,13 @@ function getData() {
 
 // Just writes the number literally -- since we're in LA it'll always be within the range
 function sendTempToArduino() {
-  console.log("Temperature for " + forecastData[forecast_index].name + ": " + forecastData[forecast_index].temperature);
-  port.write(forecastData[forecast_index].temperature + "\n");
+  console.log("Temperature for " + forecast_data[forecast_index].name + ": " + forecast_data[forecast_index].temperature);
+  port.write(forecast_data[forecast_index].temperature + "\n");
 }
 
 // Change which day we're showing the forecast for
 function readSerialData(d) {
-  forecast_index = Number(d) % forecastData.length;
+  forecast_index = Number(d) % forecast_data.length;
   sendTempToArduino();
 }
 
