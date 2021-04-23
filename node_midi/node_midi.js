@@ -18,4 +18,4 @@ input.on('message', (deltaTime, message) => {
   }
 });
 
-input.openPort(2);
+input.openPort(1);
