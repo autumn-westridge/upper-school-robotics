@@ -7,14 +7,18 @@ DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
   Serial.begin(115200);
+  pinMode(3, OUTPUT);
 
   dht.begin();
 }
 
 void loop() {
-  // Wait a few seconds between measurements.
+  // Change this
   delay(2000);
-  float t = dht.readTemperature();
+
+  analogWrite(3, 128); // Control motor
+  
+  float t = dht.readTemperature(true);
 
   // Check if any reads failed and exit early (to try again).
   if (isnan(t)) {
