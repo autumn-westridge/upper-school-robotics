@@ -11,7 +11,7 @@ Servo *servos[NUM_SERVOS] = {&s0, &s1};
 // Position/movement arrays for each servo
 int servo_pins[NUM_SERVOS] = {2, 3};
 int curr_pos[NUM_SERVOS] = {0, 0};   // The current position of the motor
-int goal_pos[NUM_SERVOS] = {0, 0};   // The goal we're working towards
+int goal_pos[NUM_SERVOS] = {180, 180};   // The goal we're working towards
 int min_pos[NUM_SERVOS] = {0, 0};    // The minimum position we'll allow the motor to move to
 int max_pos[NUM_SERVOS] = {180, 180};  // The maximum position
 
@@ -46,6 +46,16 @@ void writeMotorPosition() {
       else if (curr_pos[i] > goal_pos[i]) {
         curr_pos[i]--;
       }
+      
+      if (curr_pos == goal_pos) {
+        if (goal_pos == 180) {
+          goal_pos = 0;
+        }
+        else {
+          goal_pos = 180;
+        }
+      }
+      
       servos[i]->write(curr_pos[i]);
       servo_clock = millis();
     }
