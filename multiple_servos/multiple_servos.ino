@@ -47,12 +47,12 @@ void writeMotorPosition() {
         curr_pos[i]--;
       }
       
-      if (curr_pos == goal_pos) {
-        if (goal_pos == 180) {
-          goal_pos = 0;
+      if (curr_pos[i] == goal_pos[i]) {
+        if (goal_pos[i] == 180) {
+          goal_pos[i] = 0;
         }
         else {
-          goal_pos = 180;
+          goal_pos[i] = 180;
         }
       }
       
