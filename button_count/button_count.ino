@@ -1,3 +1,4 @@
+const int ledPin = 13;    // the number of the LED pin
 const int button_pin = 2;
 const int retrig_ms = 100;
 
@@ -9,6 +10,7 @@ int times_pressed = 0;
 
 void setup() {
   Serial.begin(9600);                 // Initialize Serial -- let us see output
+  pinMode(ledPin, OUTPUT);
   pinMode(button_pin, INPUT_PULLUP);  // Use the pullup resistor
 
   // Initialize both values
@@ -18,6 +20,11 @@ void setup() {
 }
 
 void loop() {
+  if (times_pressed >= 4) {
+    // turn LED on:
+    digitalWrite(ledPin, HIGH);
+  }
+
   curr_button_val = digitalRead(button_pin);  // Get the new value
 
   /*
